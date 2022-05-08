@@ -1,0 +1,18 @@
+﻿namespace SoftDelete.SharedKernel;
+
+// This can be modified to BaseEntity<TId> to support multiple key types (e.g. Guid)
+//public abstract class BaseEntity
+//{
+//  public int Id { get; set; }
+
+//  public List<BaseDomainEvent> Events = new List<BaseDomainEvent>();
+//}
+
+public abstract class BaseEntity<TId> : ISoftDelete
+{
+  public TId Id { get; set; } = default!;
+
+  public bool IsSoftDeleted { get; set; } = false;
+
+  public List<BaseDomainEvent> Events = new List<BaseDomainEvent>();
+}
